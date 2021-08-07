@@ -93,6 +93,5 @@ defmodule Rumbl.MultimediaTest do
       assert %Multimedia.Video{} = video
       assert video.slug == "a-really-complicated-title-goes-4-here"
     end
-
   end
 end

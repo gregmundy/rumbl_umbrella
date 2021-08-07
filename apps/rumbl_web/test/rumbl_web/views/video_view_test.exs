@@ -26,6 +26,7 @@ defmodule RumblWeb.VideoViewTest do
         changeset: changeset,
         categories: categories
       )
+
     assert String.contains?(content, "New Video")
   end
 end

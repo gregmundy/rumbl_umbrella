@@ -5,8 +5,9 @@ defmodule RumblWeb.Presence do
   See the [`Phoenix.Presence`](http://hexdocs.pm/phoenix/Phoenix.Presence.html)
   docs for more details.
   """
-  use Phoenix.Presence, otp_app: :rumbl_web,
-                        pubsub_server: RumblWeb.PubSub
+  use Phoenix.Presence,
+    otp_app: :rumbl_web,
+    pubsub_server: RumblWeb.PubSub
 
   def fetch(_topic, entries) do
     users =
@@ -16,6 +17,7 @@ defmodule RumblWeb.Presence do
       |> Enum.into(%{}, fn user ->
         {to_string(user.id), %{username: user.username}}
       end)
+
     for {key, %{metas: metas}} <- entries, into: %{} do
       {key, %{metas: metas, user: users[key]}}
     end
